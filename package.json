@@ -1,7 +1,7 @@
 {
   "name": "next-ver",
   "description": "Tells you the next semantic version for your local package",
-  "version": "1.0.0",
+  "version": "0.0.0-development",
   "author": "Gleb Bahmutov <gleb.bahmutov@gmail.com>",
   "bugs": "https://github.com/bahmutov/next-ver/issues",
   "config": {
@@ -57,7 +57,8 @@
     "secure": "nsp check",
     "size": "t=\"$(npm pack .)\"; wc -c \"${t}\"; tar tvf \"${t}\"; rm \"${t}\";",
     "test": "npm run unit",
-    "unit": "mocha src/*-spec.js"
+    "unit": "mocha src/*-spec.js",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "devDependencies": {
     "ban-sensitive-files": "1.8.3",
@@ -68,6 +69,7 @@
     "mocha": "3.1.0",
     "nsp": "2.6.1",
     "pre-git": "3.10.0",
-    "standard": "8.5.0"
+    "standard": "8.5.0",
+    "semantic-release": "^6.3.2"
   }
 }
