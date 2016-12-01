@@ -7,6 +7,7 @@
   "bin": {
     "next-ver": "bin/next-ver.js"
   },
+  "preferGlobal": true,
   "config": {
     "pre-git": {
       "commit-msg": "simple",
