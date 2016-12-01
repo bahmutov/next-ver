@@ -4,6 +4,9 @@
   "version": "0.0.0-development",
   "author": "Gleb Bahmutov <gleb.bahmutov@gmail.com>",
   "bugs": "https://github.com/bahmutov/next-ver/issues",
+  "bin": {
+    "next-ver": "bin/next-ver.js"
+  },
   "config": {
     "pre-git": {
       "commit-msg": "simple",
@@ -27,6 +30,7 @@
     "node": ">=6"
   },
   "files": [
+    "bin",
     "src/*.js",
     "!src/*-spec.js"
   ],
