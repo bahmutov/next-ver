@@ -78,6 +78,7 @@
     "semantic-release": "^6.3.2"
   },
   "dependencies": {
-    "ggit": "1.11.1"
+    "ggit": "1.12.0",
+    "ramda": "0.22.1"
   }
 }
