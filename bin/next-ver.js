@@ -5,6 +5,7 @@ const cwd = process.cwd()
 const pkg = require(join(cwd, 'package.json'))
 const R = require('ramda')
 const simple = require('simple-commit-message')
+const la = require('lazy-ass')
 const is = require('check-more-types')
 const largerChange = require('../src/larger-change')
 const {increment} = require('..')
@@ -26,7 +27,7 @@ function onlySemanticCommits (commits) {
 
 function computeTopChange (semanticCommits) {
   return semanticCommits.reduce((change, commit) => {
-    return largerChange (change, commit.type)
+    return largerChange(change, commit.type)
   }, undefined)
 }
 
@@ -41,6 +42,7 @@ function printResult (nextVersion) {
 function printFoundSemanticCommits (commits) {
   debug('semantic commits')
   debug(commits)
+  la(is.array(commits), 'expected list of commits', commits)
 }
 
 function printChange (feat) {
