@@ -4,11 +4,56 @@ const join = require('path').join
 const cwd = process.cwd()
 const pkg = require(join(cwd, 'package.json'))
 const R = require('ramda')
-
-console.log('next-ver after', pkg.version)
-
+const simple = require('simple-commit-message')
+const is = require('check-more-types')
+const largerChange = require('../src/larger-change')
+const {increment} = require('..')
+const debug = require('debug')('next-ver')
 const ggit = require('ggit')
+
+debug('next-ver starts with version %s', pkg.version)
+
+function addSemverInformation (commits) {
+  return commits.map(commit => {
+    commit.semver = simple.parse(commit.message)
+    return commit
+  })
+}
+
+function onlySemanticCommits (commits) {
+  return commits.filter(R.prop('semver'))
+}
+
+function computeTopChange (semanticCommits) {
+  return semanticCommits.reduce((change, commit) => {
+    return largerChange (change, commit.type)
+  }, undefined)
+}
+
+function printResult (nextVersion) {
+  if (!nextVersion) {
+    console.log('no new version judging by commits')
+    return
+  }
+  console.log('next version should be', nextVersion)
+}
+
+function printFoundSemanticCommits (commits) {
+  debug('semantic commits')
+  debug(commits)
+}
+
+function printChange (feat) {
+  debug('semantic change %s', feat)
+}
+
 ggit.commits.afterLastTag()
-  .then(R.map(R.prop('message')))
-  .then(console.log)
+  .then(addSemverInformation)
+  .then(onlySemanticCommits)
+  .then(R.tap(printFoundSemanticCommits))
+  .then(R.map(R.prop('semver')))
+  .then(computeTopChange)
+  .then(R.tap(printChange))
+  .then(R.partial(increment, [pkg.version]))
+  .then(printResult)
   .done()
