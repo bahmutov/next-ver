@@ -46,7 +46,7 @@ function printFoundSemanticCommits (commits) {
 }
 
 function printChange (feat) {
-  debug('semantic change %s', feat)
+  debug('semantic change "%s"', feat)
 }
 
 ggit.fetchTags()
