@@ -18,10 +18,15 @@ const semver = require('semver')
 */
 function increment (version, type) {
   debug('incrementing %s by %s', version, type)
+  if (!type) {
+    return
+  }
+  la(isSemanticChange(type), 'invalid change', type)
 
   if (!is.semver(version)) {
-    debug('invalid starting version %s', version)
+    debug('cleaning starting version %s', version)
     version = semver.clean(version)
+    debug('got version %s', version)
   }
 
   // cannot use check-more-types.semver because it is too
@@ -29,7 +34,6 @@ function increment (version, type) {
   // la(is.semver(version), 'invalid starting version', version)
   la(is.unemptyString(version), 'missing starting version', version)
 
-  la(isSemanticChange(type), 'invalid change', type)
   const semverIncrement = semverType(type)
   if (!semverIncrement) {
     return
@@ -38,7 +42,7 @@ function increment (version, type) {
 }
 
 function isSemanticChange (type) {
-  return is.oneOf(['break', 'feat', 'fix', 'chore', undefined], type)
+  return is.oneOf(['break', 'feat', 'fix', 'chore'], type)
 }
 
 function semverType (type) {
