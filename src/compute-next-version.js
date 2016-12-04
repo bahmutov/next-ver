@@ -48,6 +48,11 @@ function computeNextVersion () {
   const pkg = require(join(cwd, 'package.json'))
   debug('next-ver starts with version %s', pkg.version)
 
+  // TODO use latest "v" tag if the pkg.version
+  // is not used or missing (like 0.0.0-semantic)
+  const currentVersionTag = pkg.version
+  const incrementVersion = increment.bind(null, currentVersionTag)
+
   return ggit.commits.afterLastTag()
     .then(addSemverInformation)
     .then(onlySemanticCommits)
@@ -55,7 +60,7 @@ function computeNextVersion () {
     .then(R.map(R.prop('semver')))
     .then(computeTopChange)
     .then(R.tap(printChange))
-    .then(R.partial(increment, [pkg.version]))
+    .then(incrementVersion)
     .then(printResult)
 }
 
