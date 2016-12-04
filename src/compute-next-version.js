@@ -1,5 +1,3 @@
-const join = require('path').join
-const cwd = process.cwd()
 const R = require('ramda')
 const simple = require('simple-commit-message')
 const la = require('lazy-ass')
@@ -44,13 +42,10 @@ function printChange (feat) {
   debug('semantic change "%s"', feat)
 }
 
-function computeNextVersion () {
-  const pkg = require(join(cwd, 'package.json'))
-  debug('next-ver starts with version %s', pkg.version)
+function computeNextVersion (currentVersionTag) {
+  la(is.unemptyString(currentVersionTag),
+    'missing current version', currentVersionTag)
 
-  // TODO use latest "v" tag if the pkg.version
-  // is not used or missing (like 0.0.0-semantic)
-  const currentVersionTag = pkg.version
   const incrementVersion = increment.bind(null, currentVersionTag)
 
   return ggit.commits.afterLastTag()
