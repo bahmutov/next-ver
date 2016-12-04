@@ -29,6 +29,11 @@ or [np](https://github.com/sindresorhus/np)
 npm version 2.3.1
 ```
 
+## Testing and development
+
+Uses separate repo [next-ver-test](https://github.com/bahmutov/next-ver-test)
+for testing this tool via [dont-break](https://github.com/bahmutov/dont-break)
+
 ### Small print
 
 Author: Gleb Bahmutov &lt;gleb.bahmutov@gmail.com&gt; &copy; 2016
