@@ -17,7 +17,7 @@ version that should be used.
 ```sh
 npm install -g next-ver
 next-ver
-patch to 2.3.1
+next version should be 2.3.1
 ```
 
 Then you can publish, for example using
@@ -40,8 +40,8 @@ Author: Gleb Bahmutov &lt;gleb.bahmutov@gmail.com&gt; &copy; 2016
 
 
 * [@bahmutov](https://twitter.com/bahmutov)
-* [glebbahmutov.com](http://glebbahmutov.com)
-* [blog](http://glebbahmutov.com/blog)
+* [glebbahmutov.com](https://glebbahmutov.com)
+* [blog](https://glebbahmutov.com/blog)
 
 
 License: MIT - do anything with the code, but don't blame me if it does not work.
