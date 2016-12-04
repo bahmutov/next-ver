@@ -29,6 +29,29 @@ or [np](https://github.com/sindresorhus/np)
 npm version 2.3.1
 ```
 
+## Semantic version rules
+
+A semantic version has form "major.minor.patch"
+
+A typical semantic commit has message of the form "type(scope): message".
+Commits that do not follow this format are ignored when computing next version.
+
+If there is a commit `fix(something): ...` then new version should increment
+the "patch" number. A commit `feat(something): ...` will increment the
+"minor" number. Finally, a commit with text "BREAKING" anywhere in the message
+or the message body text will increment the "major" number.
+
+When there are multiple numbers, the will be only the highest single digit
+increment. For example, these 4 commits will increment the "minor" number
+only.
+
+```
+fix(this): ...
+fix(that): ...
+feat(log): ...
+feat(server): ...
+```
+
 ## Testing and development
 
 Uses separate repo [next-ver-test](https://github.com/bahmutov/next-ver-test)
