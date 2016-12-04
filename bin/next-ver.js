@@ -49,13 +49,18 @@ function printChange (feat) {
   debug('semantic change %s', feat)
 }
 
-ggit.commits.afterLastTag()
-  .then(addSemverInformation)
-  .then(onlySemanticCommits)
-  .then(R.tap(printFoundSemanticCommits))
-  .then(R.map(R.prop('semver')))
-  .then(computeTopChange)
-  .then(R.tap(printChange))
-  .then(R.partial(increment, [pkg.version]))
-  .then(printResult)
+ggit.fetchTags()
+  .then(computeNextVersion)
   .done()
+
+function computeNextVersion () {
+  return ggit.commits.afterLastTag()
+    .then(addSemverInformation)
+    .then(onlySemanticCommits)
+    .then(R.tap(printFoundSemanticCommits))
+    .then(R.map(R.prop('semver')))
+    .then(computeTopChange)
+    .then(R.tap(printChange))
+    .then(R.partial(increment, [pkg.version]))
+    .then(printResult)
+}
