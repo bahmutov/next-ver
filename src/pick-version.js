@@ -19,7 +19,12 @@ function pickVersion (packageVersion, tagVersion) {
     return packageVersion
   }
 
-  return semver.gt(packageVersion, tagVersion) ? packageVersion : tagVersion
+  const latest = semver.gt(packageVersion, tagVersion)
+    ? packageVersion : tagVersion
+  debug('picked latest version %s', latest)
+  const cleaned = semver.clean(latest)
+  debug('cleaned latest version %s', cleaned)
+  return cleaned
 }
 
 module.exports = pickVersion

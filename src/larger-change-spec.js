@@ -22,7 +22,7 @@ describe('comparing two changes', () => {
   })
 
   it('takes change over undefined', () => {
-    const larger = largerChange(undefined, 'fix')
+    const larger = largerChange(null, 'fix')
     la(larger === 'fix', larger)
   })
 })

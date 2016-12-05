@@ -21,7 +21,7 @@ function onlySemanticCommits (commits) {
 function computeTopChange (semanticCommits) {
   return semanticCommits.reduce((change, commit) => {
     return largerChange(change, commit.type)
-  }, undefined)
+  })
 }
 
 function printResult (nextVersion) {
@@ -42,6 +42,11 @@ function printChange (feat) {
   debug('semantic change "%s"', feat)
 }
 
+function printCommitsAfterTag (list) {
+  debug('commits after last tag')
+  debug(JSON.stringify(list, null, 2))
+}
+
 function computeNextVersion (currentVersionTag) {
   la(is.unemptyString(currentVersionTag),
     'missing current version', currentVersionTag)
@@ -49,6 +54,7 @@ function computeNextVersion (currentVersionTag) {
   const incrementVersion = increment.bind(null, currentVersionTag)
 
   return ggit.commits.afterLastTag()
+    .then(R.tap(printCommitsAfterTag))
     .then(addSemverInformation)
     .then(onlySemanticCommits)
     .then(R.tap(printFoundSemanticCommits))
