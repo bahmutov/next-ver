@@ -21,7 +21,7 @@ describe('pick start version', () => {
     la(result === '0.0.0-semantic', result)
   })
 
-  it.only('works with "v" tags', () => {
+  it('works with "v" tags', () => {
     const result = pick('0.0.0-semantic', 'v2.0.0')
     la(result === '2.0.0', 'should return cleaned version', result)
   })

@@ -2,10 +2,10 @@ const R = require('ramda')
 const simple = require('simple-commit-message')
 const la = require('lazy-ass')
 const is = require('check-more-types')
-const largerChange = require('./larger-change')
 const increment = require('./increment')
 const debug = require('debug')('next-ver')
 const ggit = require('ggit')
+const computeTopChange = require('./top-change')
 
 function addSemverInformation (commits) {
   return commits.map(commit => {
@@ -16,12 +16,6 @@ function addSemverInformation (commits) {
 
 function onlySemanticCommits (commits) {
   return commits.filter(R.prop('semver'))
-}
-
-function computeTopChange (semanticCommits) {
-  return semanticCommits.reduce((change, commit) => {
-    return largerChange(change, commit.type)
-  })
 }
 
 function printResult (nextVersion) {
@@ -40,6 +34,7 @@ function printFoundSemanticCommits (commits) {
 
 function printChange (feat) {
   debug('semantic change "%s"', feat)
+  la(is.maybe.string(feat), 'expected change to be a string', feat)
 }
 
 function printCommitsAfterTag (list) {
