@@ -54,7 +54,7 @@ function computeNextVersion (currentVersionTag) {
     .then(computeTopChange)
     .then(R.tap(printChange))
     .then(incrementVersion)
-    .then(printResult)
+    .then(R.tap(printResult))
 }
 
 module.exports = computeNextVersion

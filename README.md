@@ -29,6 +29,18 @@ or [np](https://github.com/sindresorhus/np)
 npm version 2.3.1
 ```
 
+## Incrementing version in package file
+
+If there is a new version, you can update the version in the "package.json"
+file and commit the change, including creating a tag, just like the
+command `npm version <new version>` does.
+
+Just add `--go` to the `next-ver` command
+
+```sh
+next-ver --go
+```
+
 ## Semantic version rules
 
 A semantic version has form "major.minor.patch"
