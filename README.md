@@ -22,8 +22,9 @@ next version should be 2.3.1
 
 Then you can publish, for example using
 [npm version](https://docs.npmjs.com/cli/version) command or one of the
-good helper CLI tools, like [publish-please](https://github.com/inikulin/publish-please)
-or [np](https://github.com/sindresorhus/np)
+good helper CLI tools,
+like [publish-please](https://github.com/inikulin/publish-please), [np](https://github.com/sindresorhus/np)
+or [ci-publish](https://github.com/bahmutov/ci-publish#readme).
 
 ```sh
 npm version 2.3.1
