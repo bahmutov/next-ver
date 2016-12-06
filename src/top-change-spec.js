@@ -7,6 +7,11 @@ const is = require('check-more-types')
 describe('top change', () => {
   const top = require('./top-change')
 
+  const breakCommit = {
+    firstLine: 'break(foo): foo commit',
+    type: 'major'
+  }
+
   const feat1Commit = {
     firstLine: 'feat(foo): foo commit',
     type: 'feat'
@@ -40,5 +45,11 @@ describe('top change', () => {
     const commits = [regularCommit]
     const result = top(commits)
     la(is.not.defined(result), result)
+  })
+
+  it('picks major', () => {
+    const commits = [breakCommit, feat1Commit, fixCommit, regularCommit]
+    const result = top(commits)
+    la(result === 'major', result)
   })
 })

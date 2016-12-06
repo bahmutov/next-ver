@@ -1,6 +1,7 @@
 /*
   given two semantic version changes, like "fix" and "feat",
   returns the larger one. For example:
+    "major" -> "major"
     "fix", "feat" -> "feat"
     "feat", "chore" -> "feat"
     "chore", undefined -> "chore"
@@ -13,6 +14,11 @@ function largerChange (a, b) {
   if (!b) {
     return a
   }
+
+  if (a === 'major' || b === 'major') {
+    return 'major'
+  }
+
   if (a === 'chore') {
     return b
   }

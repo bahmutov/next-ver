@@ -11,6 +11,11 @@ describe('comparing two changes', () => {
     la(is.fn(largerChange))
   })
 
+  it('prefers major over feat', () => {
+    const larger = largerChange('feat', 'major')
+    la(larger === 'major', larger)
+  })
+
   it('prefers feat over fix', () => {
     const larger = largerChange('feat', 'fix')
     la(larger === 'feat', larger)

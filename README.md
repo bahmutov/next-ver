@@ -52,6 +52,14 @@ feat(log): ...
 feat(server): ...
 ```
 
+## Related
+
+I recommend enforcing commit message format using
+[pre-git](https://github.com/bahmutov/pre-git) with its default
+[simple-commit-message](https://github.com/bahmutov/simple-commit-message#readme)
+format validator. They work great with
+[semantic-release](https://github.com/semantic-release/semantic-release) tool.
+
 ## Testing and development
 
 Uses separate repo [next-ver-test](https://github.com/bahmutov/next-ver-test)

@@ -1,17 +1,14 @@
 const R = require('ramda')
-const simple = require('simple-commit-message')
 const la = require('lazy-ass')
 const is = require('check-more-types')
 const increment = require('./increment')
 const debug = require('debug')('next-ver')
 const ggit = require('ggit')
 const computeTopChange = require('./top-change')
+const parseCommit = require('./parse-commit')
 
 function addSemverInformation (commits) {
-  return commits.map(commit => {
-    commit.semver = simple.parse(commit.message)
-    return commit
-  })
+  return commits.map(parseCommit)
 }
 
 function onlySemanticCommits (commits) {
