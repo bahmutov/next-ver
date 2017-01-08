@@ -18,7 +18,6 @@
         "npm run ban"
       ],
       "pre-push": [
-        "npm run secure",
         "npm run license",
         "npm run ban -- --all",
         "npm run size"
