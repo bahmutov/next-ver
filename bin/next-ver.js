@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
-const {computeNextVersion, decideStartVersion} = require('..')
-const ggit = require('ggit')
+const decideStartVersion = require('latest-version-or-tag')
+const {computeNextVersion} = require('..')
 const la = require('lazy-ass')
 const is = require('check-more-types')
 const debug = require('debug')('next-ver')
@@ -25,8 +25,7 @@ function setVersion (newVersion) {
   })
 }
 
-ggit.fetchTags()
-  .then(decideStartVersion)
+decideStartVersion()
   .then(computeNextVersion)
   .then(setVersion)
   .done()

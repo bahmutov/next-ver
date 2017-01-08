@@ -73,6 +73,9 @@ I recommend enforcing commit message format using
 format validator. They work great with
 [semantic-release](https://github.com/semantic-release/semantic-release) tool.
 
+* [latest-version-or-tag](https://github.com/bahmutov/latest-version-or-tag) is
+  used to fetch NPM tags and compare latest to the version in `package.json`
+
 ## Testing and development
 
 Uses separate repo [next-ver-test](https://github.com/bahmutov/next-ver-test)
