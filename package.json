@@ -81,13 +81,13 @@
   "dependencies": {
     "check-more-types": "2.23.0",
     "debug": "2.6.0",
-    "ggit": "1.13.5",
+    "ggit": "1.13.6",
     "latest-version-or-tag": "1.2.0",
     "lazy-ass": "1.5.0",
     "minimist": "1.2.0",
     "npm-utils": "1.11.0",
     "ramda": "0.22.1",
     "semver": "5.3.0",
-    "simple-commit-message": "2.2.0"
+    "simple-commit-message": "2.2.1"
   }
 }
