@@ -4,7 +4,7 @@ const is = require('check-more-types')
 const increment = require('./increment')
 const debug = require('debug')('next-ver')
 const ggit = require('ggit')
-const computeTopChange = require('./top-change')
+const computeTopChange = require('largest-semantic-change').topChange
 const parseCommit = require('./parse-commit')
 
 function addSemverInformation (commits) {
