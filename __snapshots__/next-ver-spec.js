@@ -1,6 +1,6 @@
 exports['next-ver shows version on --version 1'] = `
 
-  command: node /Users/irinakous/git/next-ver/bin/next-ver.js --version
+  command: node bin-path --version
   code: 0
   failed: false
   killed: false
@@ -21,7 +21,7 @@ exports['next-ver shows version on --version 1'] = `
 
 exports['next-ver shows version on -v 1'] = `
 
-  command: node /Users/irinakous/git/next-ver/bin/next-ver.js -v
+  command: node bin-path -v
   code: 0
   failed: false
   killed: false
