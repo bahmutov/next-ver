@@ -65,6 +65,11 @@ feat(log): ...
 feat(server): ...
 ```
 
+## CLI options
+
+- `--go` increments the version in the current folder's `package.json`
+- `--version, -v` shows the version of `next-ver` itself 
+
 ## Related
 
 I recommend enforcing commit message format using
