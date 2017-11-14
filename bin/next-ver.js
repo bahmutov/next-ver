@@ -39,7 +39,24 @@ function setVersion (newVersion) {
   })
 }
 
+function printVersion (nextVersion) {
+  if (nextVersion && !args.silent) {
+    console.log('next version should be', nextVersion)
+  }
+
+  if (nextVersion && args.silent) {
+    console.log(nextVersion)
+  }
+
+  if (!nextVersion) {
+    console.log('no new version judging by commits')
+  }
+
+  return nextVersion
+}
+
 decideStartVersion()
   .then(computeNextVersion)
+  .then(printVersion)
   .then(setVersion)
   .done()
