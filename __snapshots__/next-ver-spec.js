@@ -39,3 +39,23 @@ exports['next-ver shows version on -v 1'] = `
   -------
   
 `
+
+exports['next-ver shows only version number on --silent 1'] = `
+
+  command: node bin-path --silent
+  code: 0
+  failed: false
+  killed: false
+  signal: null
+  timedOut: false
+
+  stdout:
+  -------
+  1.8.0
+  -------
+  stderr:
+  -------
+  
+  -------
+  
+`
