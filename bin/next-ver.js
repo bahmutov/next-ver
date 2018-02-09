@@ -6,6 +6,7 @@ const la = require('lazy-ass')
 const is = require('check-more-types')
 const debug = require('debug')('next-ver')
 const npmUtils = require('npm-utils')
+const R = require('ramda')
 
 const options = {
   alias: {
@@ -39,7 +40,20 @@ function setVersion (newVersion) {
   })
 }
 
+function printVersion (nextVersion) {
+  if (!nextVersion) {
+    console.log('no new version judging by commits')
+    return
+  }
+  if (args.silent) {
+    console.log(nextVersion)
+  } else {
+    console.log('next version should be', nextVersion)
+  }
+}
+
 decideStartVersion()
   .then(computeNextVersion)
+  .then(R.tap(printVersion))
   .then(setVersion)
   .done()

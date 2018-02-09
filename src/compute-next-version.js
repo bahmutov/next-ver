@@ -15,14 +15,6 @@ function onlySemanticCommits (commits) {
   return commits.filter(R.prop('semver'))
 }
 
-function printResult (nextVersion) {
-  if (!nextVersion) {
-    console.log('no new version judging by commits')
-    return
-  }
-  console.log('next version should be', nextVersion)
-}
-
 function printFoundSemanticCommits (commits) {
   debug('semantic commits')
   debug(commits)
@@ -54,7 +46,6 @@ function computeNextVersion (currentVersionTag) {
     .then(computeTopChange)
     .then(R.tap(printChange))
     .then(incrementVersion)
-    .then(R.tap(printResult))
 }
 
 module.exports = computeNextVersion

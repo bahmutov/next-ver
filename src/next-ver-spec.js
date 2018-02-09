@@ -24,4 +24,11 @@ describe('next-ver', () => {
       .then(normalize)
       .then(snapshot)
   })
+
+  it('shows only version number on --silent', function () {
+    this.timeout(10000)
+    return execaWrap('node', [bin, '--silent'])
+      .then(normalize)
+      .then(snapshot)
+  })
 })
