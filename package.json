@@ -87,7 +87,7 @@
     "largest-semantic-change": "1.0.0",
     "latest-version-or-tag": "1.2.0",
     "lazy-ass": "1.6.0",
-    "minimist": "1.2.0",
+    "minimist": "1.2.5",
     "npm-utils": "2.0.0",
     "ramda": "0.24.1",
     "semver": "5.4.1",
